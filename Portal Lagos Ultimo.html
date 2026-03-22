@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Lago Manzanares">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#2B3A4A">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="Portal de Propietarios — Club de Campo Lago de Manzanares">
+<title>Lago de Manzanares</title>
+<style>
+/* ==== RESET ==== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.5;
+  background:#F4F1EC;
+  color:#1C2A36;
+  -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+  overscroll-behavior:none;
+}
+a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+img{max-width:100%;height:auto;display:block}
+
+/* ==== HEADER ==== */
+#hdr{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:#2B3A4A;
+  height:60px;
+  display:-webkit-box;display:-ms-flexbox;display:flex;
+  -webkit-box-align:center;-ms-flex-align:center;align-items:center;
+  gap:12px;padding:0 16px;
+  -webkit-box-shadow:0 2px 10px rgba(0,0,0,.4);box-shadow:0 2px 10px rgba(0,0,0,.4);
+}
+.hl{
+  width:40px;height:34px;min-width:40px;
+  background:#EDEAE4;border-radius:7px;overflow:hidden;
+  display:-webkit-box;display:-ms-flexbox;display:flex;
+  -webkit-box-align:center;-ms-flex-align:center;align-items:center;
+  -webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;
+}
+.hl img{width:100%;height:100%;object-fit:contain}
+.ht{-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:0;overflow:hidden}
+.he{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#A8C0D0;opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hn{font-size:17px;font-weight:300;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hn em{color:#A8C0D0;font-style:italic}
+
+/* ==== BOTTOM NAV ==== */
+#nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:999;
+  background:#2B3A4A;
+  height:62px;
+  display:-webkit-box;display:-ms-flexbox;display:flex;
+  -webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;
+  border-top:1px solid rgba(255,255,255,.1);
+  -webkit-box-shadow:0 -2px 10px rgba(0,0,0,.3);box-shadow:0 -2px 10px rgba(0,0,0,.3);
+}
+/* iOS safe area via padding hack */
+@supports(padding-bottom:env(safe-area-inset-bottom)){
+  #nav{padding-bottom:env(safe-area-inset-bottom);height:calc(62px + env(safe-area-inset-bottom))}
+}
+.nb{
+  -webkit-box-flex:1;-ms-flex:1;flex:1;
+  display:-webkit-box;display:-ms-flexbox;display:flex;
+  -webkit-box-orient:vertical;-webkit-box-direction:normal;
+  -ms-flex-direction:column;flex-direction:column;
+  -webkit-box-align:center;-ms-flex-align:center;align-items:center;
+  -webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;
+  gap:3px;background:transparent;border:none;
+  padding:6px 2px;cursor:pointer;
+  -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+  outline:none;-webkit-appearance:none;appearance:none;
+  -webkit-transition:background .12s;transition:background .12s;
+}
+.nb:active{background:rgba(255,255,255,.1)}
+.ni{font-size:22px;line-height:1;-webkit-transition:-webkit-transform .15s;transition:transform .15s}
+.nl{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.35);line-height:1;letter-spacing:.02em}
+.nb.on .nl{color:#A8C0D0}
+.nb.on .ni{-webkit-transform:scale(1.1);transform:scale(1.1)}
+
+/* Desktop: header + horizontal nav */
+@media(min-width:768px){
+  #hdr{position:static;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:auto;padding:0;-webkit-box-shadow:none;box-shadow:none}
+  #hdr-top{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:14px;padding:14px 24px 12px;max-width:820px;margin:0 auto;width:100%}
+  .hn{font-size:22px}
+  #nav{position:static;height:auto;border-top:none;border-bottom:1px solid rgba(255,255,255,.08);background:#34495E;-webkit-box-shadow:none;box-shadow:none;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-bottom:0}
+  #nav-sticky{position:-webkit-sticky;position:sticky;top:0;z-index:999;-webkit-box-shadow:0 2px 10px rgba(0,0,0,.3);box-shadow:0 2px 10px rgba(0,0,0,.3)}
+  .nb{-webkit-box-flex:0;-ms-flex:none;flex:none;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;gap:7px;padding:13px 18px}
+  .ni{font-size:15px}
+  .nl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+  .nb.on{background:rgba(255,255,255,.08)}
+  #body{padding-top:24px;padding-bottom:40px}
+}
+
+/* ==== SCROLL BODY ==== */
+#body{
+  padding-top:16px;/* no fixed header */
+  padding-bottom:82px;/* 62px nav + 20px gap */
+  padding-left:16px;padding-right:16px;
+  min-height:100vh;
+}
+@supports(padding-bottom:env(safe-area-inset-bottom)){
+  #body{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+}
+.wrap{max-width:700px;margin:0 auto}
+
+/* ==== SECTIONS ==== */
+.sec{display:none}
+.sec.on{display:block;-webkit-animation:fu .2s ease both;animation:fu .2s ease both}
+@-webkit-keyframes fu{from{opacity:0;-webkit-transform:translateY(8px);transform:translateY(8px)}to{opacity:1;-webkit-transform:none;transform:none}}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ptitle{font-size:clamp(1.2rem,5vw,1.6rem);font-weight:300;color:#1C2A36;margin-bottom:16px;line-height:1.2}
+.ptitle em{color:#4A6274;font-style:italic}
+
+/* ==== HERO ==== */
+.hero{
+  background:-webkit-linear-gradient(145deg,#2B3A4A 0%,#34495E 55%,#4A6274 100%);
+  background:linear-gradient(145deg,#2B3A4A 0%,#34495E 55%,#4A6274 100%);
+  border-radius:16px;padding:20px 18px;margin-bottom:16px;
+  position:relative;overflow:hidden;
+  -webkit-box-shadow:0 5px 20px rgba(43,58,74,.22);box-shadow:0 5px 20px rgba(43,58,74,.22);
+}
+.hero-title-row{display:flex;align-items:center;gap:14px;margin-bottom:7px;}.hero-logo-wrap img{width:70px;height:70px;border-radius:12px;object-fit:contain;background:#EDEAE4;padding:6px;flex-shrink:0;}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 75% at 95% 8%,rgba(106,143,168,.28) 0%,transparent 60%)}
+.hero-tag{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:5px;background:rgba(168,192,208,.14);border:1px solid rgba(168,192,208,.22);border-radius:20px;padding:4px 11px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#A8C0D0;margin-bottom:11px}
+.hero-tag::before{content:"●";font-size:7px;-webkit-animation:bl 2s infinite;animation:bl 2s infinite}
+@-webkit-keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h2{font-size:clamp(1.3rem,5.5vw,1.9rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:7px}
+.hero h2 em{color:#A8C0D0;font-style:italic}
+.hero p{font-size:13px;color:rgba(255,255,255,.58);line-height:1.55}
+
+/* Quick grid */
+.qgrid{display:-ms-grid;display:grid;-ms-grid-columns:1fr 10px 1fr;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+@media(min-width:440px){.qgrid{-ms-grid-columns:1fr 10px 1fr 10px 1fr 10px 1fr;grid-template-columns:repeat(4,1fr)}}
+.qcard{
+  background:#fff;border:1px solid #D5D9DC;border-radius:13px;
+  padding:15px 10px;
+  display:-webkit-box;display:-ms-flexbox;display:flex;
+  -webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;
+  -webkit-box-align:center;-ms-flex-align:center;align-items:center;
+  gap:7px;cursor:pointer;
+  -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+  -webkit-box-shadow:0 1px 4px rgba(0,0,0,.07);box-shadow:0 1px 4px rgba(0,0,0,.07);
+  -webkit-transition:-webkit-transform .13s;transition:transform .13s;
+  outline:none;-webkit-appearance:none;appearance:none;
+  text-align:center;
+}
+.qcard:active{-webkit-transform:scale(.94);transform:scale(.94);-webkit-box-shadow:none;box-shadow:none}
+.qico{font-size:26px;line-height:1}
+.qlbl{font-size:11.5px;font-weight:700;color:#1C2A36}
+
+/* Notice */
+.notice{background:#fff;border:1px solid #D5D9DC;border-left:4px solid #6B8FA8;border-radius:0 12px 12px 0;padding:13px 15px;margin-bottom:11px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,.05);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.notice.gold{border-left-color:#4A6274}
+.ntag{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#6B8FA8;margin-bottom:4px}
+.notice.gold .ntag{color:#4A6274}
+.notice h4{font-size:14px;font-weight:700;color:#1C2A36;margin-bottom:3px;line-height:1.3}
+.notice p{font-size:13px;color:#6E7E8A;line-height:1.5}
+
+/* ==== ACCORDION ==== */
+.acc{background:#fff;border:1px solid #D5D9DC;border-radius:13px;overflow:hidden;margin-bottom:11px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,.05);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.ab{
+  display:-webkit-box;display:-ms-flexbox;display:flex;
+  -webkit-box-align:center;-ms-flex-align:center;align-items:center;
+  gap:10px;width:100%;padding:14px 15px;min-height:58px;
+  background:transparent;border:none;text-align:left;cursor:pointer;
+  -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+  outline:none;-webkit-appearance:none;appearance:none;
+  -webkit-transition:filter .12s;transition:filter .12s;
+}
+.ab:active{filter:brightness(.93)}
+.ab.navy{background:-webkit-linear-gradient(135deg,#2B3A4A,#34495E);background:linear-gradient(135deg,#2B3A4A,#34495E)}
+.ab.steel{background:-webkit-linear-gradient(135deg,#34495E,#4A6274);background:linear-gradient(135deg,#34495E,#4A6274)}
+.ab.lake{background:-webkit-linear-gradient(135deg,#4A6274,#6B8FA8);background:linear-gradient(135deg,#4A6274,#6B8FA8)}
+.ab.gold{background:-webkit-linear-gradient(135deg,#1C2A36,#2B3A4A);background:linear-gradient(135deg,#1C2A36,#2B3A4A)}
+.al{-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:0}
+.at{font-size:14px;font-weight:500;color:#fff;line-height:1.35}
+.as{font-size:11.5px;color:rgba(255,255,255,.42);margin-top:2px}
+.aa{font-size:11px;color:rgba(255,255,255,.45);-ms-flex-negative:0;flex-shrink:0;pointer-events:none;-webkit-transition:-webkit-transform .25s;transition:transform .25s;margin-left:4px}
+.aa.o{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
+.abody{overflow:hidden;max-height:0;-webkit-transition:max-height .35s ease;transition:max-height .35s ease}
+.abody.o{max-height:9000px}
+.ainner{padding:15px}
+
+.atag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:9px}
+.atag.blue{background:rgba(107,143,168,.12);color:#6B8FA8}
+.atag.gold{background:rgba(196,163,90,.12);color:#4A6274}
+
+/* Doc styles */
+.dp{font-size:14px;color:#1C2A36;line-height:1.7;margin-bottom:11px}
+.ds{font-weight:600;font-size:14px;color:#1C2A36;margin-bottom:9px}
+.dfirma{font-size:13px;color:#6E7E8A;font-style:italic;margin-top:13px}
+.dhl{background:#EEF4F9;border:1px solid #BDD0DF;border-radius:9px;padding:11px 13px;font-size:13px;color:#2B3A4A;margin:11px 0;line-height:1.6}
+.dhl strong{display:block;font-size:13.5px;margin-bottom:3px}
+.dinfo{background:#F4F1EC;border-left:3px solid #4A6274;padding:10px 13px;border-radius:0 9px 9px 0;margin:11px 0;font-size:13px;line-height:1.65}
+.dinfo a{color:#4A6274}
+.dsec{font-size:13px;font-weight:700;color:#2B3A4A;margin:11px 0 4px}
+.dlist{padding-left:17px;margin:4px 0 9px}
+.dlist li{font-size:13px;line-height:1.65;margin-bottom:2px}
+.ddiv{height:1px;background:#D5D9DC;margin:9px 0}
+.aviso{background:#EFF6FB;border-left:4px solid #6B8FA8;border-radius:0 9px 9px 0;padding:12px 14px;margin:10px 0}
+.aviso p{font-size:13.5px;line-height:1.65}
+.aviso p+p{margin-top:7px}
+
+/* ==== LIQUIDACIONES ==== */
+.mgrid{display:-ms-grid;display:grid;-ms-grid-columns:1fr;grid-template-columns:1fr;gap:11px;margin-bottom:14px}
+@media(min-width:460px){.mgrid{-ms-grid-columns:1fr 11px 1fr;grid-template-columns:1fr 1fr}}
+.mcard{
+  background:#fff;border:1px solid #D5D9DC;border-radius:13px;overflow:hidden;
+  cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+  -webkit-transition:border-color .18s;transition:border-color .18s;
+  -webkit-box-shadow:0 1px 4px rgba(0,0,0,.06);box-shadow:0 1px 4px rgba(0,0,0,.06);
+}
+.mcard:active{opacity:.86}
+.mcard.sel{border-color:#2B3A4A;-webkit-box-shadow:0 0 0 2px #2B3A4A;box-shadow:0 0 0 2px #2B3A4A}
+.mc-top{background:-webkit-linear-gradient(135deg,#2B3A4A,#34495E);background:linear-gradient(135deg,#2B3A4A,#34495E);padding:13px 15px 10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}
+.mc-mo{font-size:19px;font-weight:300;color:#fff;letter-spacing:.02em}
+.mc-yr{font-size:11px;color:rgba(255,255,255,.38);margin-top:1px}
+.mbadge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-top:2px}
+.mbadge.ok{background:rgba(168,192,208,.2);color:#A8C0D0}
+.mbadge.pend{background:rgba(196,163,90,.2);color:#A8C0D0}
+.mc-body{padding:11px 15px}
+.mrow{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;font-size:13px;color:#6E7E8A;margin-bottom:5px;gap:6px}
+.mrow strong{color:#1C2A36;text-align:right;font-weight:600}
+.mdiv{height:1px;background:#D5D9DC;margin:7px 0}
+.msaldo{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;font-size:13.5px;font-weight:700;gap:6px}
+.sp{color:#2B5C8A}.sn{color:#B94040}
+
+#dbox{margin-top:5px}
+.dpanel{background:#fff;border:1px solid #D5D9DC;border-radius:14px;overflow:hidden;-webkit-animation:fu .2s ease;animation:fu .2s ease;-webkit-box-shadow:0 5px 20px rgba(43,58,74,.1);box-shadow:0 5px 20px rgba(43,58,74,.1)}
+.dp-hdr{background:-webkit-linear-gradient(135deg,#2B3A4A,#34495E);background:linear-gradient(135deg,#2B3A4A,#34495E);padding:15px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:10px}
+.dp-title{font-size:17px;font-weight:300;color:#fff;line-height:1.2}
+.dp-title span{color:#A8C0D0;font-style:italic}
+.dp-meta{font-size:11px;color:rgba(255,255,255,.38);margin-top:3px}
+.dp-close{background:rgba(255,255,255,.12);border:none;color:rgba(255,255,255,.8);width:42px;height:42px;min-width:42px;border-radius:50%;font-size:16px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-negative:0;flex-shrink:0;outline:none;cursor:pointer;-webkit-transition:background .15s;transition:background .15s}
+.dp-close:active{background:rgba(255,255,255,.28)}
+.dp-body{padding:15px;overflow-x:hidden}
+
+.slbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6E7E8A;margin:16px 0 7px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:8px}
+.slbl::after{content:"";-webkit-box-flex:1;-ms-flex:1;flex:1;height:1px;background:#D5D9DC}
+.slbl.g{color:#4A6274}
+.slbl:first-child{margin-top:0}
+
+.twrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;margin-bottom:4px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:320px}
+.tbl th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6E7E8A;padding:8px 9px;border-bottom:1px solid #D5D9DC;white-space:nowrap}
+.tbl th.r{text-align:right}
+.tbl td{padding:8px 9px;color:#1C2A36;border-bottom:1px solid rgba(0,0,0,.04);vertical-align:top;line-height:1.4}
+.tbl td.cm{color:#6E7E8A;font-size:12px}
+.tbl td.am{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:500}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:nth-child(even) td{background:#F5F6F8}
+.tbl .str td{background:#E6EDF3!important;font-weight:700;color:#2B3A4A!important}
+.tbl .ttr td{background:#2B3A4A!important;color:#fff!important;font-weight:700}
+
+.sboxes{display:-ms-grid;display:grid;-ms-grid-columns:1fr 9px 1fr;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}
+@media(min-width:460px){.sboxes{-ms-grid-columns:1fr 9px 1fr 9px 1fr;grid-template-columns:repeat(3,1fr)}}
+.sbox{padding:12px 13px;border-radius:11px;border:1px solid #D5D9DC}
+.sb-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6E7E8A;margin-bottom:4px}
+.sb-val{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.sbox.egr{background:#FEF8F0;border-color:#EDD9B8}.sbox.egr .sb-val{color:#8B6520}
+.sbox.ing{background:#EEF4F9;border-color:#BDD0DF}.sbox.ing .sb-val{color:#2B3A4A}
+.sbox.sp2{background:#2B3A4A;border-color:#2B3A4A;-ms-grid-column-span:2;grid-column:1/-1}.sbox.sp2 .sb-lbl{color:rgba(255,255,255,.5)}.sbox.sp2 .sb-val{color:#fff;font-size:16px}
+.sbox.sn2{background:#FEF0EE;border-color:#F2C4C0;-ms-grid-column-span:2;grid-column:1/-1}.sbox.sn2 .sb-val{color:#B94040}
+@media(min-width:460px){.sbox.sp2,.sbox.sn2{grid-column:auto}.sbox.sp2 .sb-val{font-size:15px}}
+.nota{background:#FEF9F0;border:1px solid #EDD9B8;border-radius:9px;padding:12px 13px;font-size:13px;color:#8B6520;line-height:1.65;margin-top:11px}
+.nota strong{display:block;margin-bottom:3px}
+
+/* ==== PAGO ==== */
+.payhdr{background:-webkit-linear-gradient(145deg,#2B3A4A 0%,#34495E 55%,#4A6274 100%);background:linear-gradient(145deg,#2B3A4A 0%,#34495E 55%,#4A6274 100%);color:#fff;border-radius:16px;padding:20px;-webkit-box-shadow:0 5px 20px rgba(43,58,74,.22);box-shadow:0 5px 20px rgba(43,58,74,.22);margin-bottom:14px}
+.payhdr h3{font-size:15px;font-weight:300;color:#A8C0D0;margin-bottom:14px;letter-spacing:.04em}
+.prow{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:13.5px;margin-bottom:7px;gap:8px}
+.prow span:first-child{color:rgba(255,255,255,.42);white-space:nowrap;font-size:12.5px}
+.pval{font-weight:700;word-break:break-all;text-align:right;-webkit-box-flex:1;-ms-flex:1;flex:1}
+.psep{height:1px;background:rgba(255,255,255,.1);margin:11px 0}
+.pmail{font-size:12.5px;color:rgba(255,255,255,.42);margin-top:9px;line-height:1.55}
+.pmail a{color:#A8C0D0;text-decoration:underline}
+.cpbtn{
+  display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;
+  -webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:3px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);color:#fff;
+  border-radius:7px;padding:5px 11px;font-size:12px;font-weight:700;cursor:pointer;
+  margin-left:8px;-ms-flex-negative:0;flex-shrink:0;vertical-align:middle;
+  -webkit-transition:background .13s;transition:background .13s;
+  outline:none;-webkit-appearance:none;appearance:none;
+}
+.cpbtn:active{background:rgba(255,255,255,.26)}
+.paynote{background:#fff;border:1px solid #D5D9DC;border-radius:13px;padding:15px;font-size:13.5px;color:#6E7E8A;line-height:1.65}
+.paynote strong{color:#1C2A36;display:block;margin-bottom:5px;font-size:14px}
+
+/* ==== CONTACTO ==== */
+.cta-card{
+  background:linear-gradient(160deg,#2B3A4A 0%,#34495E 60%,#3d5268 100%);
+  border-radius:18px;overflow:hidden;
+  box-shadow:0 6px 24px rgba(43,58,74,.22);margin-bottom:16px;
+  padding:22px 22px 0;
+}
+.cta-card-hdr h3{
+  font-size:18px;font-weight:400;color:#fff;margin-bottom:20px;letter-spacing:.01em;
+}
+.cta-info-grid{display:flex;flex-direction:column;gap:16px;margin-bottom:22px;}
+.cta-info-item{display:flex;align-items:center;gap:13px;}
+.cta-ico{font-size:22px;flex-shrink:0;width:34px;text-align:center;filter:grayscale(.3);}
+.cta-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42);line-height:1;margin-bottom:4px;}
+.cta-val{font-size:15px;font-weight:500;color:#fff;line-height:1.3;}
+.cta-val a{color:#fff;text-decoration:none;}
+.cta-card-btns{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;
+  padding:0 0 22px;
+}
+.cta-btn{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:14px 8px;font-size:13.5px;font-weight:700;
+  text-decoration:none;border:none;cursor:pointer;
+  border-radius:12px;transition:opacity .13s;
+  -webkit-tap-highlight-color:transparent;
+  background:rgba(255,255,255,.1);color:#fff;
+  backdrop-filter:blur(4px);
+}
+.cta-btn.wapp{background:#25D366;color:#fff;}
+.cta-btn.mail{background:#4A90D9;color:#fff;}
+.cta-btn.call{background:#4A6274;color:#fff;}
+.cta-btn:active{opacity:.75;}
+.cta-map{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 22px;margin:0 -22px;
+  border-top:1px solid rgba(255,255,255,.1);
+  background:rgba(0,0,0,.15);
+}
+.cta-map-ico{font-size:26px;flex-shrink:0;}
+.cta-map-info{flex:1;min-width:0;}
+.cta-map-info h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;}
+.cta-map-info p{font-size:12px;color:rgba(255,255,255,.55);line-height:1.4;}
+.cta-map-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 16px;background:rgba(255,255,255,.15);color:#fff;
+  border-radius:10px;font-size:13px;font-weight:700;
+  text-decoration:none;white-space:nowrap;flex-shrink:0;
+  transition:opacity .13s;border:1px solid rgba(255,255,255,.2);
+}
+.cta-map-btn:active{opacity:.75;}
+
+/* ==== WIDGETS INICIO ==== */
+
+/* SVG icon helper */
+.wico{display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.wico svg{display:block;}
+
+/* Resumen financiero */
+.wgt-fin{
+  background:#fff;border:1px solid #D5D9DC;border-radius:16px;overflow:hidden;
+  box-shadow:0 2px 10px rgba(43,58,74,.07);margin-bottom:14px;
+}
+.wgt-fin-hdr{
+  background:linear-gradient(135deg,#2B3A4A,#34495E);
+  padding:13px 16px 11px;display:flex;align-items:center;justify-content:space-between;
+}
+.wgt-fin-hdr span{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#A8C0D0;}
+.wgt-fin-hdr strong{font-size:11px;font-weight:700;color:#A8C0D0;background:rgba(168,192,208,.18);padding:3px 9px;border-radius:20px;}
+.wgt-fin-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+.wgt-fin-item{padding:13px 12px;text-align:center;position:relative;}
+.wgt-fin-item:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:#E8EAEC;}
+.wgt-fin-lbl{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6E7E8A;margin-bottom:5px;}
+.wgt-fin-val{font-size:14px;font-weight:700;color:#1C2A36;line-height:1.1;}
+.wgt-fin-val.neg{color:#B94040;}
+.wgt-fin-val.pos{color:#2B5C8A;}
+.wgt-fin-val.pend{color:#6B8FA8;font-size:12px;}
+
+/* Próximo vencimiento — paleta azul/celeste */
+.wgt-venc{
+  background:linear-gradient(135deg,#2B3A4A 0%,#34495E 60%,#4A6274 100%);
+  border-radius:16px;padding:16px 18px;margin-bottom:14px;
+  box-shadow:0 4px 16px rgba(43,58,74,.28);
+  display:flex;align-items:center;gap:14px;
+}
+.wgt-venc-ico{flex-shrink:0;}
+.wgt-venc-body{flex:1;min-width:0;}
+.wgt-venc-tag{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(168,192,208,.75);margin-bottom:4px;}
+.wgt-venc-title{font-size:16px;font-weight:600;color:#fff;line-height:1.2;margin-bottom:2px;}
+.wgt-venc-sub{font-size:12px;color:rgba(255,255,255,.5);}
+.wgt-venc-badge{
+  background:rgba(168,192,208,.18);border:1px solid rgba(168,192,208,.3);
+  border-radius:10px;padding:8px 13px;text-align:center;flex-shrink:0;
+}
+.wgt-venc-dias{font-size:22px;font-weight:700;color:#A8C0D0;line-height:1;}
+.wgt-venc-dias-lbl{font-size:9px;font-weight:600;color:rgba(168,192,208,.6);text-transform:uppercase;letter-spacing:.06em;}
+
+/* Métricas rápidas */
+.wgt-metrics{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;
+}
+.wgt-metric{
+  background:#fff;border:1px solid #D5D9DC;border-radius:14px;
+  padding:14px 14px 13px;box-shadow:0 1px 5px rgba(0,0,0,.05);
+  display:flex;align-items:flex-start;gap:11px;
+}
+.wgt-metric-ico-wrap{
+  width:36px;height:36px;min-width:36px;border-radius:10px;
+  background:linear-gradient(135deg,#EEF4F9,#D8E9F4);
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.wgt-metric-num{font-size:22px;font-weight:700;color:#1C2A36;line-height:1;margin-bottom:3px;}
+.wgt-metric-lbl{font-size:10.5px;font-weight:600;color:#6E7E8A;line-height:1.3;}
+.wgt-metric-sub{font-size:10px;color:#A0ADB5;margin-top:2px;}
+
+/* Timeline novedades */
+.wgt-timeline-hdr{
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#6E7E8A;margin-bottom:11px;display:flex;align-items:center;gap:7px;
+}
+.wgt-timeline{display:flex;flex-direction:column;gap:0;margin-bottom:14px;position:relative;}
+.wgt-timeline::before{
+  content:'';position:absolute;left:17px;top:8px;bottom:8px;
+  width:2px;background:linear-gradient(to bottom,#BDD0DF,transparent);
+}
+.wgt-tl-item{display:flex;gap:14px;padding:0 0 14px;position:relative;}
+.wgt-tl-dot{
+  width:34px;height:34px;min-width:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  z-index:1;box-shadow:0 0 0 3px #F4F1EC;
+}
+.wgt-tl-dot.op{background:#EEF4F9;border:2px solid #6B8FA8;}
+.wgt-tl-dot.bill{background:#E8F0F7;border:2px solid #34495E;}
+.wgt-tl-dot.meet{background:#EEF4F9;border:2px solid #4A6274;}
+.wgt-tl-body{flex:1;min-width:0;padding-top:4px;}
+.wgt-tl-date{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A0ADB5;margin-bottom:2px;}
+.wgt-tl-title{font-size:13.5px;font-weight:700;color:#1C2A36;line-height:1.3;margin-bottom:2px;}
+.wgt-tl-desc{font-size:12px;color:#6E7E8A;line-height:1.5;}
+.wgt-tl-link{
+  display:inline-flex;align-items:center;gap:4px;margin-top:5px;
+  font-size:11.5px;font-weight:700;color:#34495E;text-decoration:none;
+  background:rgba(52,73,94,.08);border-radius:6px;padding:3px 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV STICKY -->
+<div id="nav-sticky">
+  <nav id="nav" role="navigation" aria-label="Navegaci&oacute;n principal">
+    <button class="nb on" data-s="inicio"><span class="ni">🏠</span><span class="nl">Inicio</span></button>
+    <button class="nb" data-s="gastos"><span class="ni">📄</span><span class="nl">Gastos</span></button>
+    <button class="nb" data-s="liquidaciones"><span class="ni">📊</span><span class="nl">Liquid.</span></button>
+    <button class="nb" data-s="comunicados"><span class="ni">📢</span><span class="nl">Comunic.</span></button>
+    <button class="nb" data-s="pago"><span class="ni">🏦</span><span class="nl">Pago</span></button>
+    <button class="nb" data-s="contacto"><span class="ni">📞</span><span class="nl">Contacto</span></button>
+  </nav>
+</div>
+
+<!-- MAIN -->
+<div id="body">
+<div class="wrap">
+
+<!-- INICIO -->
+<section id="sec-inicio" class="sec on">
+  <div class="hero">
+    <div class="hero-tag">Portal Activo</div>
+    <div class="hero-title-row"><div class="hero-logo-wrap"><img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//2gAMAwEAAgADAAAAIQgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwSChggQwggggggggggggggggggggggggggggggggghls4QQQQQQccqigggggggggggggggggggggggggggggglkAQQQQQQQQQQQYrAggggggggggggggggggggggggggh+gQQQQQQQQQQQQQQQdiwgggggggggggggggggggggggiQwQQQQQQQQQQQQQQQQQVZQgggggggggggggggggggggnYQQQQQQQQQQQQQQQQQQQQULQgggggggggggggggggggg8AQQQQQQQQQQTQQQQQQQQQQUgwggggggggggggggggghzgQQQQQQQQQQQcwQQQQQQQQQQVygggggggggggggggggkgQQQQQQQQQQQQYgQQQQQQQQQQQQAggggggggggggggggoQQQQQQQQQQQQRZ3AQQQQQQQQQQaggggggggggggggggmoQQQQQQQQQQQQQV5QQQQQQQQQQQQRAggggggggggggggIgQQQQQQQQQQQQQAwoQQQQQQQQQQQUAgggggggggggggl4QQQQQQQQQQQQQo1SQQQQQQQQQQQQUawgggggggggggghQSDADAQQcTTQQWggVyRQTTTTSTSRTSQAggggggggggggiwQihyrVRRXY3cIBoQ1b3b7RXZVbLkiqQggggggggggggggogs4x3XXaZYSTw7w1TQEMQQYYbDMUQgggggggggggggggggkw88w44YQUdSRUcQ8044wgok84wggggggggggggggkQwgTUyc+QkUaggwIggxe8QhRW040QYyQwggggggggggghS/wCCEfwdUM2i8IdABf0tGg+h/wBrpsJN9qCCCCCCCCCCCCSzzTCSCTDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC//9oADAMBAAIAAwAAABDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzznDcFFUCPzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz0DEIIIIIJEGTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyhAIIIIIIIIIIIKpJjzzzzzzzzzzzzzzzzzzzzzzzzz7uEIIIIIIIIIIIIIIIJHPzzzzzzzzzzzzzzzzzzzzzzzzqMIIIIIIIIIIIIIIIIIIVTzzzzzzzzzzzzzzzzzzzzzzLEIIIIIIIIIIIIIIIIIIIJDTzzzzzzzzzzzzzzzzzzzztAIIIIIIIIIII4IIIIIIIIIJJfzzzzzzzzzzzzzzzzzzU0IIIIIIIIIIIIyIIIIIIIIIJJTzzzzzzzzzzzzzzzzzzwIIIIIIIIIIIIL0IIIIIIIIIIIJ7zzzzzzzzzzzzzzzyyEIIIIIIIIIIIJE9wIIIIIIIIIIKrTzzzzzzzzzzzzzzzCIIIIIIIIIIIIMZvYIIIIIIIIIIIIPzzzzzzzzzzzzzz4EIIIIIIIIIIIII/wDKiCCCCCCCCCCCH88888888888888rBCCCCCCCCCCCCWJ4sCCCCCCCCCCCCBT8888888888888uJEIIIJPP7PBNL08a3jHAOOPPLOLENKb8888888888888ji1WnG0BFVvgvw+8QNvsuscEkRVc+Zpwc888888888888c8cs7jG5JC2kKE11XFouTnYEcsEPH+pO88888888888884888NNvCXvNdNdI+4stv/AH/zfPPH779vPPPPPPPPPPPPPKtfvAQrHXjEKtvOx+XCzP8AQDGyd/8ApUj0V888888888888oxvBWabPAxIPq8vTTnWXWN3hvIzw38p88888888888888IfwNcO8JV888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888//8QAKBEAAgIBAwQCAgIDAAAAAAAAAAECERITITADEDFAQVEgIjJQYXCA/9oACAECAQE/AP8AedMUGabNJmmzTY4Mp/0dC6bFBIr86HBMfTaN/fj0/sSS5Wk/JLp/XuKNkYJejKCY017FkY5CVem0mSjj68Y2xKvVaslHH1YqxKl68lY1XqQjXK3vXJONr04R+ea/25epGvRSEqXK3sRe4nySVo39Dprfm6j2I+S/25epHe+dogtuabtiE/25Zrbnj5oXLJ0j5IoX8uZ80PJaLRaMkZItFotfhfbqS7R2iLmmt+ZIwZg/s02YGBp/5NNGmjTRpmmaaJRUS9+0lXZQ2NM0zTNM039mD+zBmDMGYyMZlSHfzzPtuWWy2Wy2XIuRci5FyHkzFm5uUzKRlIykZSMmZszZmzJlyP2KkW16lsstlstmTMmZMyZkzJmTHJikzJmTMmX+NstmTG75492tj4sTEtyx012fkUd+6JfZEokqIrshsa2EuyQ0NFbkhquaJQhbkfFC8l0xrcuhD8ie/dCfwREfHa00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" alt="Logo Lago de Manzanares"></div><h2>Lago <em>de</em> Manzanares</h2></div>
+    <p>Club de Campo &middot; Manzanares, Buenos Aires<br>Portal exclusivo para propietarios.</p>
+  </div>
+
+  <!-- WIDGET: RESUMEN FINANCIERO -->
+  <div class="wgt-fin">
+    <div class="wgt-fin-hdr">
+      <span style="display:flex;align-items:center;gap:7px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A8C0D0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg> Resumen &mdash; Febrero 2026</span>
+      <strong>Cerrado</strong>
+    </div>
+    <div class="wgt-fin-body">
+      <div class="wgt-fin-item">
+        <div class="wgt-fin-lbl">Egresos</div>
+        <div class="wgt-fin-val neg">$ 32,8M</div>
+      </div>
+      <div class="wgt-fin-item">
+        <div class="wgt-fin-lbl">Ingresos</div>
+        <div class="wgt-fin-val pos">$ 33,5M</div>
+      </div>
+      <div class="wgt-fin-item">
+        <div class="wgt-fin-lbl">Saldo</div>
+        <div class="wgt-fin-val pos">$ 661K</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WIDGET: PRÓXIMO VENCIMIENTO -->
+  <div class="wgt-venc">
+    <div class="wgt-venc-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A8C0D0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+    <div class="wgt-venc-body">
+      <div class="wgt-venc-tag">Pr&oacute;ximo vencimiento</div>
+      <div class="wgt-venc-title">Gastos Marzo 2026</div>
+      <div class="wgt-venc-sub">$ 200.000 por lote &middot; Banco Ciudad</div>
+    </div>
+    <div class="wgt-venc-badge">
+      <div class="wgt-venc-dias">28</div>
+      <div class="wgt-venc-dias-lbl">d&iacute;as</div>
+    </div>
+  </div>
+
+  <!-- WIDGET: MÉTRICAS RÁPIDAS -->
+  <div class="wgt-metrics">
+    <div class="wgt-metric">
+      <div class="wgt-metric-ico-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A6274" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></div>
+      <div>
+        <div class="wgt-metric-num">&mdash;</div>
+        <div class="wgt-metric-lbl">Lotes totales</div>
+        <div class="wgt-metric-sub">Pendiente</div>
+      </div>
+    </div>
+    <div class="wgt-metric">
+      <div class="wgt-metric-ico-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A6274" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <div>
+        <div class="wgt-metric-num">&mdash;</div>
+        <div class="wgt-metric-lbl">Propietarios al d&iacute;a</div>
+        <div class="wgt-metric-sub">Pendiente</div>
+      </div>
+    </div>
+    <div class="wgt-metric" style="grid-column:1/-1;">
+      <div class="wgt-metric-ico-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A6274" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div>
+        <div class="wgt-metric-num">4</div>
+        <div class="wgt-metric-lbl">Meses de gesti&oacute;n</div>
+        <div class="wgt-metric-sub">Dic 2025 &ndash; Mar 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WIDGET: ÚLTIMAS NOVEDADES TIMELINE — auto-generado desde COMUNICADOS -->
+  <div class="wgt-timeline-hdr">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6E7E8A" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    &Uacute;ltimas novedades
+  </div>
+  <div class="wgt-timeline" id="wgt-timeline"></div>
+
+
+</section>
+
+<!-- GASTOS -->
+<section id="sec-gastos" class="sec">
+  <p class="ptitle"><em>Gastos Administrativos</em></p>
+
+  <div class="acc">
+    <button class="ab navy" data-a="gm26"><div class="al"><div class="at">Carta de Gastos Adm. &mdash; Liquidaci&oacute;n Marzo 2026</div><div class="as">Buenos Aires, 2 de marzo de 2026 &middot; Venc. 15/04/2026</div></div><span class="aa" id="aa-gm26">&#9660;</span></button>
+    <div class="abody" id="ab-gm26"><div class="ainner">
+      <p class="ds">Estimados propietarios:</p>
+      <p class="dp">Adjuntamos al presente la liquidaci&oacute;n correspondiente al mes de marzo, con vencimiento el d&iacute;a 15 de abril. En la misma encontrar&aacute;n el detalle de los conceptos vinculados a la administraci&oacute;n del Club de Campo Lago de Manzanares.</p>
+      <p class="dp">Resulta necesario reiterar que la continuidad operativa del barrio se financia exclusivamente con el pago de los gastos administrativos mensuales. Actualmente, la gesti&oacute;n puede mantenerse gracias al cumplimiento de los propietarios que se encuentran al d&iacute;a y al acompa&ntilde;amiento econ&oacute;mico que el desarrollador contin&uacute;a brindando.</p>
+      <p class="dp">Al mismo tiempo, se encuentran en ejecuci&oacute;n distintas acciones orientadas a reorganizar y mejorar el barrio, incluyendo trabajos de limpieza y desmonte, relevamientos t&eacute;cnicos y optimizaci&oacute;n de servicios.</p>
+      <p class="dp">Respecto a la seguridad, el barrio cuenta con un m&oacute;vil policial que presta servicio de lunes a lunes en el horario de 20:00 a 08:00 horas, y los s&aacute;bados y domingos de 08:00 a 16:00 horas.</p>
+      <div class="dhl"><strong>&#128176; Valor del gasto administrativo mensual</strong>$ 200.000 (pesos doscientos mil) por lote.</div>
+      <div class="dinfo"><strong>Forma de pago:</strong> Transferencia bancaria | <strong>Banco Ciudad</strong><br>CBU: 0290052010000571246961 | Alias: TRONCO.CIFRA.COATI<br>Enviar comprobante a <a href="https://mail.google.com/mail/?view=cm&to=lagodemanzanares.adm@gmail.com&su=Comprobante%20de%20pago%20-%20Lago%20de%20Manzanares" target="_blank" rel="noopener" style="color:#A8C0D0;font-weight:600;">lagodemanzanares.adm@gmail.com</a> indicando n&uacute;mero de lote.</div>
+      <p class="dfirma">Atentamente,<br><strong style="font-style:normal;color:#1C2A36">Administraci&oacute;n Lago de Manzanares</strong></p>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="ab navy" data-a="gf26"><div class="al"><div class="at">Carta de Gastos Adm. &mdash; Liquidaci&oacute;n Febrero 2026</div><div class="as">Buenos Aires, 2 de febrero de 2026 &middot; Venc. 15/03/2026</div></div><span class="aa" id="aa-gf26">&#9660;</span></button>
+    <div class="abody" id="ab-gf26"><div class="ainner">
+      <p class="ds">Estimados lotistas:</p>
+      <p class="dp">Por medio de la presente, adjuntamos la liquidaci&oacute;n correspondiente al mes de febrero, en la cual podr&aacute;n consultar el detalle de los movimientos vinculados a los conceptos de administraci&oacute;n del Club de Campo Lago de Manzanares.</p>
+      <p class="dp">El cumplimiento regular de estas obligaciones resulta fundamental para sostener el mantenimiento del barrio, garantizar condiciones m&iacute;nimas de seguridad y avanzar en la normalizaci&oacute;n de los servicios. La gesti&oacute;n actual se sostiene, en gran medida, gracias al cumplimiento de los pocos propietarios que se encuentran al d&iacute;a y a los aportes realizados por el desarrollador, los cuales revisten car&aacute;cter de pr&eacute;stamo.</p>
+      <div class="dhl"><strong>&#128176; Valor del gasto administrativo mensual</strong>$ 200.000 (pesos doscientos mil) por lote.</div>
+      <div class="dinfo"><strong>Modalidad de pago:</strong> Transferencia bancaria | <strong>Banco Ciudad</strong><br>CBU: 0290052010000571246961 | Alias: TRONCO.CIFRA.COATI<br>Enviar comprobante a <a href="https://mail.google.com/mail/?view=cm&to=lagodemanzanares.adm@gmail.com&su=Comprobante%20de%20pago%20-%20Lago%20de%20Manzanares" target="_blank" rel="noopener" style="color:#A8C0D0;font-weight:600;">lagodemanzanares.adm@gmail.com</a> indicando n&uacute;mero de lote.</div>
+      <p class="dfirma">Atentamente,<br><strong style="font-style:normal;color:#1C2A36">Administraci&oacute;n Lago de Manzanares</strong></p>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="ab navy" data-a="ge26"><div class="al"><div class="at">Carta de Gastos Adm. &mdash; Liquidaci&oacute;n Enero 2026</div><div class="as">Buenos Aires, 2 de febrero de 2026 &middot; Venc. 15/02/2026</div></div><span class="aa" id="aa-ge26">&#9660;</span></button>
+    <div class="abody" id="ab-ge26"><div class="ainner">
+      <p class="ds">Estimados lotistas:</p>
+      <p class="dp">Por medio de la presente, adjuntamos la liquidaci&oacute;n correspondiente al mes de enero. El cumplimiento regular de estas obligaciones resulta fundamental para sostener el mantenimiento del barrio y garantizar condiciones m&iacute;nimas de seguridad.</p>
+      <div class="dhl"><strong>&#128176; Valor del gasto administrativo mensual</strong>$ 200.000 (pesos doscientos mil) por lote.</div>
+      <div class="dinfo"><strong>Modalidad de pago:</strong> Transferencia bancaria | <strong>Banco Ciudad</strong><br>CBU: 0290052010000571246961 | Alias: TRONCO.CIFRA.COATI<br>Enviar comprobante a <a href="https://mail.google.com/mail/?view=cm&to=lagodemanzanares.adm@gmail.com&su=Comprobante%20de%20pago%20-%20Lago%20de%20Manzanares" target="_blank" rel="noopener" style="color:#A8C0D0;font-weight:600;">lagodemanzanares.adm@gmail.com</a> indicando n&uacute;mero de lote.</div>
+      <p class="dfirma">Atentamente,<br><strong style="font-style:normal;color:#1C2A36">Administraci&oacute;n Lago de Manzanares</strong></p>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="ab navy" data-a="gd25"><div class="al"><div class="at">Carta de Gastos Adm. &mdash; Per&iacute;odo Diciembre 2025</div><div class="as">Buenos Aires, 7 de enero de 2026 &middot; Venc. 15/01/2026</div></div><span class="aa" id="aa-gd25">&#9660;</span></button>
+    <div class="abody" id="ab-gd25"><div class="ainner">
+      <p class="ds">Estimados lotistas:</p>
+      <p class="dp">Por medio de la presente, adjuntamos la liquidaci&oacute;n correspondiente al per&iacute;odo comprendido entre el 13 y el 31 de diciembre. Se acompa&ntilde;a el listado de quienes registran deuda en concepto de gastos administrativos. Solicitamos se comuniquen para regularizar los per&iacute;odos adeudados de los &uacute;ltimos 24 meses, informando que al momento no se aplican intereses ni recargos.</p>
+      <div class="dhl"><strong>&#128176; Valor del gasto administrativo mensual</strong>$ 200.000 (pesos doscientos mil) por lote.</div>
+      <div class="dinfo"><strong>Modalidad de pago:</strong> Transferencia electr&oacute;nica | <strong>Banco Ciudad</strong><br>CBU: 0290052010000571246961 | Alias: TRONCO.CIFRA.COATI<br>Enviar comprobante a <a href="https://mail.google.com/mail/?view=cm&to=lagodemanzanares.adm@gmail.com&su=Comprobante%20de%20pago%20-%20Lago%20de%20Manzanares" target="_blank" rel="noopener" style="color:#A8C0D0;font-weight:600;">lagodemanzanares.adm@gmail.com</a> indicando n&uacute;mero de lote.</div>
+      <p class="dfirma">Atentamente,<br><strong style="font-style:normal;color:#1C2A36">Administraci&oacute;n Lago de Manzanares</strong></p>
+    </div></div>
+  </div>
+</section>
+
+<!-- LIQUIDACIONES -->
+<section id="sec-liquidaciones" class="sec">
+  <p class="ptitle">Liquidaciones <em>mensuales</em></p>
+  <div class="mgrid" id="mgrid"></div>
+  <div id="dbox"></div>
+</section>
+
+<!-- COMUNICADOS -->
+<section id="sec-comunicados" class="sec">
+    <p class="ptitle">Comunicados <em>&amp; Novedades</em></p>
+  <div id="comunicados-list"></div>
+</section>
+
+<!-- PAGO -->
+<section id="sec-pago" class="sec">
+  <p class="ptitle">Datos para <em>transferencia bancaria</em></p>
+  <div class="payhdr">
+    <h3>Cuenta Club de Campo</h3>
+    <div class="prow"><span>Banco</span><span class="pval">Banco Ciudad</span></div>
+    <div class="prow"><span>CBU</span><span class="pval">0290052010000571246961<button class="cpbtn" onclick="cp('0290052010000571246961',this)">&#128203; Copiar</button></span></div>
+    <div class="prow"><span>Alias</span><span class="pval">TRONCO.CIFRA.COATI<button class="cpbtn" onclick="cp('TRONCO.CIFRA.COATI',this)">&#128203; Copiar</button></span></div>
+    <div class="psep"></div>
+    <div class="prow"><span>Importe por lote</span><span class="pval">$ 200.000 / mes</span></div>
+    <p class="pmail">Enviar comprobante a <a href="https://mail.google.com/mail/?view=cm&to=lagodemanzanares.adm@gmail.com&su=Comprobante%20de%20pago%20-%20Lago%20de%20Manzanares" target="_blank" rel="noopener" style="color:#A8C0D0;font-weight:600;">lagodemanzanares.adm@gmail.com</a> indicando n&uacute;mero de lote.</p>
+  </div>
+  <div class="paynote">
+    <strong>Importante</strong>
+    La continuidad operativa del barrio se financia exclusivamente con el pago de los gastos administrativos mensuales. Abonar en t&eacute;rmino consignando el n&uacute;mero de lote es fundamental para sostener los servicios esenciales.
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="sec-contacto" class="sec">
+  <p class="ptitle"><em>Contacto</em></p>
+  <div class="cta-card">
+    <div class="cta-card-hdr">
+      <h3>Administraci&oacute;n &mdash; Club de Campo Lago de Manzanares</h3>
+      <div class="cta-info-grid">
+        <div class="cta-info-item">
+          <span class="cta-ico">&#128231;</span>
+          <div>
+            <div class="cta-lbl">Email</div>
+            <div class="cta-val"><a href="https://mail.google.com/mail/?view=cm&to=lagodemanzanares.adm@gmail.com&su=Consulta%20-%20Lago%20de%20Manzanares" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;">lagodemanzanares.adm@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="cta-info-item">
+          <span class="cta-ico">&#128241;</span>
+          <div>
+            <div class="cta-lbl">WhatsApp / Tel&eacute;fono</div>
+            <div class="cta-val">+54 11 7646-2020</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-card-btns">
+      <a class="cta-btn wapp" href="https://wa.me/5491176462020?text=Hola%2C%20soy%20propietario%20de%20Lago%20de%20Manzanares%20y%20me%20comunico%20para%20consultar..." target="_blank" rel="noopener">&#128172; WhatsApp</a>
+      <a class="cta-btn mail" href="https://mail.google.com/mail/?view=cm&to=lagodemanzanares.adm@gmail.com&su=Consulta%20-%20Lago%20de%20Manzanares" target="_blank" rel="noopener">&#9993;&#65039; Email</a>
+      <a class="cta-btn call" href="tel:+5491176462020">&#128222; Llamar</a>
+    </div>
+    <div class="cta-map">
+      <span class="cta-map-ico">&#128205;</span>
+      <div class="cta-map-info">
+        <h4>Ubicaci&oacute;n</h4>
+        <p>Club de Campo Lago de Manzanares<br>Manzanares, Buenos Aires</p>
+      </div>
+      <a class="cta-map-btn" href="https://www.google.com/maps/place/LAGO+DE+MANZANARES+-+COUNTRY+CLUB/@-34.4565724,-59.0115297,17z/data=!3m1!4b1!4m6!3m5!1s0x95bc83341db5cc1b:0xe2d5cda0e5d0307d!8m2!3d-34.4565769!4d-59.0089494!16s%2Fg%2F11lcbg724l" target="_blank" rel="noopener">&#128506;&#65039; Ver en mapa</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+</div><!-- /body -->
+
+<script>
+(function(){
+'use strict';
+
+/* =====================================================================
+   COMUNICADOS — fuente única de datos
+   Para agregar un nuevo comunicado: insertar un objeto al INICIO del array.
+   Campos:
+     id       : identificador único (sin espacios)
+     titulo   : título del acordeón
+     fecha    : texto de fecha/subtítulo del acordeón
+     color    : "lake" | "steel" | "gold" | "navy"  (color del botón)
+     tag      : texto del badge interno (ej. "📋 Aviso operativo")
+     tagColor : "blue" | "gold"
+     resumen  : texto corto para el widget de Inicio (1-2 líneas)
+     fechaCorta: texto de fecha para el widget (ej. "9 mar 2026")
+     categoria: texto de categoría para el widget (ej. "Aviso operativo")
+     html     : contenido HTML interno del acordeón (sin el tag/badge)
+===================================================================== */
+var COMUNICADOS = [
+  {
+    id: 'cavance26',
+    titulo: 'Informe de Avance de Obras y Servicios \u2014 Marzo 2026',
+    fecha: 'Administraci\u00f3n Lago de Manzanares \u00b7 Marzo 2026',
+    color: 'lake',
+    tag: '\u{1F527} Informe de obras',
+    tagColor: 'blue',
+    resumen: 'Avances en tendido el\u00e9ctrico, agua, cloacas, accesos, seguridad y estudios t\u00e9cnicos.',
+    fechaCorta: 'Mar 2026',
+    categoria: 'Informe de obras',
+    html: `
+      <p class="dp" style="margin-top:9px">Estimados propietarios, a continuaci\u00f3n les presentamos un resumen del estado actual de los trabajos que se est\u00e1n llevando a cabo en el barrio.</p>
+      <div class="dsec">1. Tendido El\u00e9ctrico</div>
+      <p class="dp">Se est\u00e1 realizando un relevamiento integral de todo el tendido el\u00e9ctrico del barrio. Se mantuvo una reuni\u00f3n con Edenor, acordando gestionar los reclamos de forma gradual y coordinada. Este proceso demandar\u00e1 varios meses de trabajo.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">2. Sistema Cloacal</div>
+      <p class="dp">Se est\u00e1n inspeccionando todas las bocas de inspecci\u00f3n de la red cloacal y se procede al vaciamiento de la planta de efluentes para desobstruir los circuitos.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">3. Sistema de Agua</div>
+      <p class="dp">Se instal\u00f3 una bomba nueva en reemplazo de la unidad fuera de servicio y se est\u00e1 construyendo un tablero el\u00e9ctrico nuevo con todas las protecciones necesarias.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">4. Control de Accesos</div>
+      <p class="dp">Se contrataron e instalaron los motores en los accesos. Se est\u00e1 configurando apertura remota desde el tel\u00e9fono celular de cada propietario.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">5. Parquizaci\u00f3n y Espacios Verdes</div>
+      <p class="dp">Se contrat\u00f3 la fumigaci\u00f3n de la totalidad del predio para eliminar malezas. Los trabajos avanzan progresivamente.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">6. Seguridad y Videovigilancia</div>
+      <p class="dp">C\u00e1maras fijas en porter\u00eda y un domo en torre pr\u00f3xima al canal. Planificados dos domos adicionales en tanque de agua y sector oeste.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">7. Trabajos de Desmonte</div>
+      <p class="dp">Contin\u00faan los trabajos de desmonte en el predio. Se estiman aproximadamente dos meses m\u00e1s de trabajo.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">8. Estudios T\u00e9cnicos y Permisos</div>
+      <ul class="dlist">
+        <li><strong>Estudio batim\u00e9trico:</strong> relevamiento de profundidades del lago.</li>
+        <li><strong>Estudio hidr\u00e1ulico:</strong> an\u00e1lisis de cotas de inundaci\u00f3n.</li>
+        <li><strong>Relevamiento topogr\u00e1fico:</strong> determinaci\u00f3n de niveles del terreno.</li>
+      </ul>
+      <p class="dfirma">Atentamente,<br><strong style="font-style:normal;color:#1C2A36">Administraci\u00f3n Lago de Manzanares</strong></p>`
+  },
+  {
+    id: 'ctopo',
+    titulo: 'Trabajos de medici\u00f3n topogr\u00e1fica y relevamiento de pilares',
+    fecha: 'Buenos Aires, 9 de marzo de 2026',
+    color: 'lake',
+    tag: '\u{1F4CB} Aviso operativo',
+    tagColor: 'blue',
+    resumen: 'Empresa ZANARA realiza relevamiento de pilares el\u00e9ctricos. No alarmarse ante presencia de operarios.',
+    fechaCorta: '9 mar 2026',
+    categoria: 'Aviso operativo',
+    html: `
+      <div class="aviso" style="margin-top:9px">
+        <p>Les informamos que durante la presente semana se estar\u00e1n realizando <strong>trabajos de medici\u00f3n topogr\u00e1fica y relevamiento de pilares el\u00e9ctricos</strong> dentro del predio.</p>
+        <p>Las tareas estar\u00e1n a cargo de personal autorizado de la empresa <strong>ZANARA</strong>, por lo que les solicitamos no alarmarse ante la presencia de operarios con equipos de medici\u00f3n en distintas zonas del barrio.</p>
+      </div>
+      <p style="font-size:13px;color:#6E7E8A;margin-top:8px">Ante cualquier consulta, pueden comunicarse con la Administraci\u00f3n.</p>
+      <p class="dfirma">Atentamente,<br><strong style="font-style:normal;color:#1C2A36">Administraci\u00f3n Lago de Manzanares</strong></p>`
+  },
+  {
+    id: 'cfede',
+    titulo: 'Carta de Federico Vilari\u00f1o a los Propietarios',
+    fecha: 'Mensaje personal del desarrollador',
+    color: 'gold',
+    tag: '\u2709\uFE0F Carta personal',
+    tagColor: 'gold',
+    resumen: 'Federico Vilari\u00f1o agradece a los propietarios al d\u00eda e invita a regularizar los gastos pendientes.',
+    fechaCorta: 'Feb 2026',
+    categoria: 'Carta del desarrollador',
+    html: `
+      <p class="dp" style="margin-top:9px">El s\u00e1bado pasado tuve el gusto de conocer a varios propietarios del barrio, donde hice una breve exposici\u00f3n de las tareas que vamos a realizar e intent\u00e9 contestar algunas inquietudes.</p>
+      <p class="dp">En la medida que van pasando los d\u00edas nos vamos encontrando con un grado de deterioro mayor al que pens\u00e1bamos, pero esa es nuestra responsabilidad: la asumimos y seguimos adelante con entusiasmo.</p>
+      <div class="dhl"><strong>\u{1F4AC} Sobre los propietarios que eligieron quedarse</strong>Habr\u00eda que estar agradecido a esas personas, ya que si no hubiera sido as\u00ed pongo en duda que hubiera habido alg\u00fan oferente para desarrollar hoy el barrio.</div>
+      <p class="dp">Por eso escribo estas l\u00edneas para agradecer a los que est\u00e1n pagando los gastos administrativos e invitar a los que a\u00fan no lo han hecho. El pago de los \u00faltimos 24 meses es m\u00e1s una obligaci\u00f3n moral que econ\u00f3mica.</p>
+      <p class="dfirma">Saludos cordiales,<br><strong style="font-style:normal;color:#1C2A36">Federico Vilari\u00f1o</strong></p>`
+  },
+  {
+    id: 'cmin',
+    titulo: 'Minuta de reuni\u00f3n \u2014 07 de febrero de 2026',
+    fecha: 'Casa del Ing. Far\u00edas \u00b7 Lago de Manzanares',
+    color: 'steel',
+    tag: '\u{1F91D} Reuni\u00f3n de propietarios',
+    tagColor: 'blue',
+    resumen: 'Federico Vilari\u00f1o expuso el estado de situaci\u00f3n del emprendimiento y las obras en curso.',
+    fechaCorta: '7 feb 2026',
+    categoria: 'Reuni\u00f3n de propietarios',
+    html: `
+      <p class="dp" style="margin-top:9px">Estimados propietarios, a continuaci\u00f3n les acercamos la minuta de la reuni\u00f3n realizada el 07 de febrero en la casa del Ing. Far\u00edas.</p>
+      <div class="dsec">1. Desmonte y ordenamiento</div><p class="dp">Se contrat\u00f3 una empresa para iniciar las tareas de desmonte. Se prev\u00e9 que esta etapa demande varios meses, especialmente en la zona Sur.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">2. Estudios t\u00e9cnicos en curso</div><p class="dp">Desde febrero trabaja una empresa a cargo del Ing. Gonzalo Fontana, realizando estudios de red el\u00e9ctrica y agua, caminos, batimetr\u00eda del lago, topograf\u00eda y evaluaciones hidr\u00e1ulicas.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">3. Seguridad</div><ul class="dlist"><li>Reparaci\u00f3n y colocaci\u00f3n de portones</li><li>Instalaci\u00f3n de barreras electr\u00f3nicas</li><li>Refuerzo del cerco perimetral</li><li>Sistema de identificaci\u00f3n para propietarios</li></ul>
+      <div class="ddiv"></div>
+      <div class="dsec">4. Infraestructura y servicios</div><p class="dp">Prioridades: agua, electricidad, caminos, cloacas y guardia. Se realizar\u00e1 relevamiento t\u00e9cnico integral.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">5. Regularizaci\u00f3n legal y administrativa</div><p class="dp">Zona Norte m\u00e1s avanzada. Se eval\u00faa constituci\u00f3n de fideicomiso y actualizaci\u00f3n del reglamento interno.</p>
+      <div class="ddiv"></div>
+      <div class="dsec">6. Gastos administrativos</div><p class="dp">Se remarc\u00f3 la importancia de regularizar el pago y generar un fondo de reserva. Se solicita abonar los \u00faltimos 24 meses a valor diciembre.</p>
+      <p class="dfirma">Atentamente,<br><strong style="font-style:normal;color:#1C2A36">Administraci\u00f3n Lago de Manzanares</strong></p>`
+  },
+  {
+    id: 'cinicio',
+    titulo: 'Inicio de la nueva gesti\u00f3n administrativa',
+    fecha: 'Diciembre 2025',
+    color: 'steel',
+    tag: '\u{1F4CB} Comunicado institucional',
+    tagColor: 'blue',
+    resumen: 'Nueva etapa en la administraci\u00f3n del barrio. Se publicar\u00e1n liquidaciones mensuales con detalle de ingresos y egresos.',
+    fechaCorta: 'Dic 2025',
+    categoria: 'Comunicado institucional',
+    html: `
+      <p class="dp" style="margin-top:9px">Informamos a todos los propietarios que <strong>desde diciembre</strong> ha comenzado una nueva etapa en la administraci\u00f3n del <strong>Barrio Lago de Manzanares</strong>, con el compromiso de trabajar con transparencia, orden y mejora continua.</p>
+      <p class="dp">A partir de esta nueva gesti\u00f3n, se publicar\u00e1n <strong>mensualmente las liquidaciones de gastos administrativos</strong>, para que todos los propietarios puedan acceder f\u00e1cilmente a la informaci\u00f3n y verificar el detalle de ingresos y egresos.</p>
+      <p class="dfirma">Atentamente,<br><strong style="font-style:normal;color:#1C2A36">Administraci\u00f3n Lago de Manzanares</strong></p>`
+  }
+];
+
+/* Iconos SVG para el timeline según el tipo de comunicado */
+var TL_ICONS = {
+  lake: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B8FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+  steel: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A6274" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  gold:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A6274" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  navy:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+};
+var TL_DOT_CLASS = { lake:'op', steel:'meet', gold:'meet', navy:'bill' };
+
+/* Render comunicados section */
+function renderComunicados() {
+  var list = document.getElementById('comunicados-list');
+  if (!list) return;
+  var html = '';
+  for (var i = 0; i < COMUNICADOS.length; i++) {
+    var c = COMUNICADOS[i];
+    html += '<div class="acc">' +
+      '<button class="ab ' + c.color + '" data-a="' + c.id + '">' +
+        '<div class="al">' +
+          '<div class="at">' + c.titulo + '</div>' +
+          '<div class="as">' + c.fecha + '</div>' +
+        '</div>' +
+        '<span class="aa" id="aa-' + c.id + '">&#9660;</span>' +
+      '</button>' +
+      '<div class="abody" id="ab-' + c.id + '"><div class="ainner">' +
+        '<span class="atag ' + c.tagColor + '">' + c.tag + '</span>' +
+        c.html +
+      '</div></div>' +
+    '</div>';
+  }
+  list.innerHTML = html;
+}
+
+/* Render timeline widget — muestra los 3 comunicados más recientes */
+function renderTimeline() {
+  var tl = document.getElementById('wgt-timeline');
+  if (!tl) return;
+  var shown = COMUNICADOS.slice(0, 3);
+  var html = '';
+  for (var i = 0; i < shown.length; i++) {
+    var c = shown[i];
+    var dotClass = TL_DOT_CLASS[c.color] || 'op';
+    var icon = TL_ICONS[c.color] || TL_ICONS.lake;
+    html += '<div class="wgt-tl-item">' +
+      '<div class="wgt-tl-dot ' + dotClass + '">' + icon + '</div>' +
+      '<div class="wgt-tl-body">' +
+        '<div class="wgt-tl-date">' + c.fechaCorta + ' &middot; ' + c.categoria + '</div>' +
+        '<div class="wgt-tl-title">' + c.titulo + '</div>' +
+        '<div class="wgt-tl-desc">' + c.resumen + '</div>' +
+        '<a class="wgt-tl-link" onclick="go(\'comunicados\');return false;" href="#">Ver detalle &rarr;</a>' +
+      '</div>' +
+    '</div>';
+  }
+  tl.innerHTML = html;
+}
+
+/* FORMAT */
+function fmt(n){
+  if(!n&&n!==0)return'$ \u2014';
+  if(n===0)return'$ \u2014';
+  return'$ '+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,'.').replace(/\.(\d{2})$/,',$1');
+}
+function ce(d){var t=0;Object.values(d.egresos).forEach(function(s){if(s.items)s.items.forEach(function(r){t+=r[2]||0;});});return t;}
+function ci(d){return d.ingresos.reduce(function(s,r){return s+(r[2]||0);},0);}
+
+/* DATA */
+var MESES = {
+ mar26:{id:"mar26",mes:"Marzo",anio:"2026",vto:"15/04/2026",periodo:"1 al 31/03/2026",status:"pending",
+  egresos:{},ingresos:[],saldoInicial:null,
+  nota:"La liquidaci\u00f3n de marzo est\u00e1 en preparaci\u00f3n y ser\u00e1 publicada pr\u00f3ximamente."},
+ feb26:{id:"feb26",mes:"Febrero",anio:"2026",vto:"15/03/2026",periodo:"1 al 28/02/2026",status:"ok",
+  egresos:{
+   sueldos:{label:"Sueldos y aportes al personal",items:[
+    ["Cano, Rodolfo","Fc. 001-0008",960000],["Cano, Rodolfo (rond\u00edn nocturno)","Transferencia",725000],
+    ["Heflein, Gast\u00f3n","Fc. 001-0002",960000],["Jara, Julio E.","Fc. 001-0047",960000],
+    ["Leiva, Miguel \u00c1ngel","Fc. 001-0085",1600000],["Falco, M. Fernanda","Transferencia",3000000],
+    ["Guardia policial","Transferencia",3489050.40]]},
+   monotributo:{label:"Aportes Monotributo",items:[
+    ["Cano, Rodolfo","Monotributo 02-26",42386.74],["Heflein, Gast\u00f3n","Monotributo 01 y 02-26",20614.99],
+    ["Jara, Julio E.","Monotributo 02-26",42386.74],["Leiva, Miguel \u00c1ngel","Monotributo 02-26",56501.85]]},
+   seguros:{label:"Seguros",items:[["Seguro Resp. Civil 2/11","P\u00f3liza nro. 271754",55584.40]]},
+   mantenimientos:{label:"Abonos por mantenimientos",items:[
+    ["Mantenimiento parques y jardines","Efectivo",20000000],["Soda Bel\u00e9n SRL","Transferencia MP",52000],
+    ["Mayra Ba\u00f1o Qu\u00edmico","Efectivo",50000],["Claro","Fc. 1331-70746553",6466.01]]},
+   otros:{label:"Otros mantenimientos y reparaciones",items:[
+    ["Fumigaci\u00f3n P. Urdinez","Fc. 0002-00003350",130000],["Reparaci\u00f3n luminarias","Transferencia",450000],
+    ["Materiales luminarias","Transferencia",160340.23],["Librer\u00eda / copias / bebidas","Transferencia",40480],
+    ["Nafta m\u00f3vil policial","Transferencia",323120],["Cartel\u00eda laguna","Transferencia",980000]]},
+   edenor:{label:"Impuestos y servicios",items:[
+    ["Ecoterra","Rbo. 1900-000391",313000],["Cosefa","Fc. 015-74057",13266.41],
+    ["Edenor AP1","Cta. 5176834871",23820.91],["Edenor AP2","Cta. 1879443257",4987.03],
+    ["Edenor AP3","Cta. 2858919000",62968.52],["Edenor CH","Cta. 1962427174",24809.94],
+    ["Edenor POR","Cta. 6146537920",93810.72],["Edenor SS","Cta. 7056963671",24809.94]]}},
+  ingresos:[
+   ["Fidel, Andrea","N08",200000],["Fragale, Guillermo","G16",200000],["Valle, Marina","I15",200000],
+   ["Puletti, Alberto","Y38",200000],["Iturburu, Juan Pedro","E05-E06-I01-I02-I03-I04-J01-J02",1000000],
+   ["Quintana, Juan Manuel","B01",200000],["Acu\u00f1a, H\u00e9ctor Javier","K02",500000],
+   ["L\u00f3pez, Fernando","G10-M01",400000],["Letang, Gabriel","M04",200000],
+   ["Chamson, Axel","G09-G11-N09",600000],["Pastore, Luis / Rojas, Eva","A26",2800000],
+   ["Najo, Susana","F08-F09-F10-AE03",800000],["Gim\u00e9nez Natale, Mar\u00eda In\u00e9s","G13",200000],
+   ["Ottonello, Miguel","G14",200000],["Segovia, Diego","Q02",200000],
+   ["Jasminoy, Ignacio","C15-N11-N12",600000],["Weiss, Vernon","O07",200000],
+   ["Lago, Marcela","G12",400000],["Figueroa Villamayor, Julio","B16",200000],
+   ["Brun, M. Josefina y Brun, Tom\u00e1s","L01",400000],["Brun, Alejandro y Stabile, Virginia","F02",400000],
+   ["Garibaldi, Osvaldo","A01-F06",800000],["Jasminoy, Ignacio","N11",2400000],
+   ["M\u00e1rquez, Andrea","C47",200000],["Tello, Germ\u00e1n","O04",200000],["Garc\u00eda, Santiago","H12",200000],
+   ["Barberio, Marta Susana","I10-M02",400000],["Sartori, M. Clemencia","E05-I01-I02-I03-I04-J01-J02",1000000],
+   ["Iskowitz, Sergio","N08",200000],["Colombo, Nicol\u00e1s","B03-H17-H18",600000],
+   ["Far\u00edas, Daniel","AC02-AC03-AC04-AC05-AC06",1000000],["Graziano, Gabriel","H13-N14",400000],
+   ["Romano, Ezequiel","H10",100000],["Go\u00f1i, Uki","K06-K07",200000],
+   ["Casaux Alsina, Santiago","Q04",200000],["Jasminoy, Ignacio","C15-N11-N12",600000],
+   ["Aporte FV","\u2014",15410000]],
+  saldoInicial:661772.58},
+ ene26:{id:"ene26",mes:"Enero",anio:"2026",vto:"15/02/2026",periodo:"1 al 31/01/2026",status:"ok",
+  egresos:{
+   sueldos:{label:"Sueldos y aportes al personal",items:[
+    ["Cano, Rodolfo","Fc. 001-0007",900000],["Cano, Rodolfo (rond\u00edn nocturno)","",1450000],
+    ["Cano, Rodolfo (rond\u00edn \u2013 saldo dic)","",210000],["Heflein, Gast\u00f3n","",450000],
+    ["Jara, Julio E.","Fc. 001-0046",900000],["Leiva, Miguel \u00c1ngel","Fc. 001-0083",1550000],
+    ["Leiva, M.\u00c1. (recolecci\u00f3n residuos dic-25)","",50000],
+    ["Villareal, Ram\u00f3n","Fc. 001-0008",900000],["Falco, M. Fernanda","",2500000]]},
+   monotributo:{label:"Aportes Monotributo",items:[
+    ["Cano, Rodolfo","Monotributo 01-26",37085.74],
+    ["Jara, Julio E.","Monotributo 12-25 y 01-26",74171.48],
+    ["Leiva, Miguel \u00c1ngel","Monotributo 01-26",37085.74]]},
+   seguros:{label:"Seguros",items:[["Seguro Resp. Civil 1/11","P\u00f3liza Nro. 271754",50584.01]]},
+   mantenimientos:{label:"Abonos por mantenimientos",items:[
+    ["Mantenimiento parques y jardines","Efectivo",20000000],["Soda Bel\u00e9n SRL","Transferencia MP",52000],
+    ["Mayra Ba\u00f1o Qu\u00edmico","Fc. 001-0159",50000],["Claro","Fc. 1331-64134051",6466.01]]},
+   otros:{label:"Otros mantenimientos y reparaciones",items:[
+    ["Matafuegos","Efectivo",312520],["Reparaciones luminarias + materiales","Transferencia",165920.85],
+    ["Vi\u00e1ticos","",4000],["Librer\u00eda","",19153.17]]},
+   edenor:{label:"Impuestos y servicios",items:[
+    ["Ecoterra","Rbo. 1900-0351",313000],["Cosefa","Fc. 015-74057",12874.82],
+    ["Edenor AP1","Cta. 5176834871",59294.87],["Edenor AP2","Cta. 1879443257",5910.40],
+    ["Edenor AP3","Cta. 2858919000",184136.08],["Edenor CH","Cta. 1962427174",34896.47],
+    ["Edenor POR","Cta. 6146537920",153526.48],["Edenor SS","Cta. 7056963671",35742.33],
+    ["Saldo dic-25 Edenor","",90680.90]]}},
+  ingresos:[
+   ["Isabella, Sebasti\u00e1n","J06",400000],["Valle, Marina","I15",200000],["Fragale, Guillermo","G16",200000],
+   ["Puletti, Alberto","Y38",200000],["Weiss, Vernon","O07",200000],
+   ["Ottonello, Miguel \u00c1ngel","G13-G14",400000],["Najo, Susana","F08-F09-F10-AE3",800000],
+   ["Tello, Germ\u00e1n","O04",200000],["Calder\u00f3n O\u00f1a, Juan C.","O03",300000],
+   ["Chamson, Axel","G09-G11-N09",600000],["Barberio, Marta S.","I10",200000],
+   ["Letang, Gabriel","M04",200000],["Barberio, Marta S.","M02",200000],
+   ["Garc\u00eda, Santiago S.","H12",200000],["L\u00f3pez, Fernando","G10-M01",400000],
+   ["M\u00e1rquez, Andrea","C47",200000],["Goldstchein, Javier","O05",200000],
+   ["Quintana, Juan Manuel","B01",200000],["Far\u00edas, Daniel","AC02-AC06",1000000],
+   ["Casaux Alsina, Santiago","Q04",200000],["Aporte FV","\u2014",10000000],
+   ["Lubnicki, Roberto","D20",200000],["Romano, Ezequiel","H10",100000],
+   ["Colombo, Nicol\u00e1s","B03-H17-H18",600000],["Graziano, Gabriel","H13-N14",500000],
+   ["Bardas, Jorge","C04",200000],["Aporte FV","\u2014",13000000],["Go\u00f1i, Uki","K06-K07",400000]],
+  saldoInicial:-229178.07},
+ dic25:{id:"dic25",mes:"Diciembre",anio:"2025",vto:"15/01/2026",periodo:"13 al 31/12/2025",status:"ok",
+  egresos:{
+   sueldos:{label:"Sueldos y aportes al personal",items:[
+    ["Cano, Rodolfo","Fc. 001-0006",900000],["Jara, Julio E.","Fc. 001-0045",900000],
+    ["Leiva, Miguel \u00c1ngel","Fc. 001-0082",1500000],["Villareal, Ram\u00f3n","Fc. 001-0007",900000],
+    ["Falco, M. Fernanda","",1250000]]},
+   monotributo:{label:"Aportes Monotributo",items:[
+    ["Cano, Rodolfo","Monotributo 12-25",37085.74],["Jara, Julio E.","Monotributo 12-25",19239.97],
+    ["Leiva, Miguel \u00c1ngel","Monotributo 12-25",37085.74],["Villareal, Ram\u00f3n","Monotributo 12-25",37085.74]]},
+   seguros:{label:"Seguros",items:[["Seguro Resp. Civil 1/10","P\u00f3liza Nro.",0]]},
+   mantenimientos:{label:"Abonos por mantenimientos",items:[
+    ["Soda Bel\u00e9n SRL","",62000],["Ecoterra","",296000]]},
+   edenor:{label:"Impuestos y servicios",items:[
+    ["Edenor AP1","Cta. 5176834871",74120.35],["Edenor AP2","Cta. 1879443257",7941.43],
+    ["Edenor AP3","Cta. 2858919000",223903.17],["Edenor CH","Cta. 1962427174",34591.76],
+    ["Edenor POR","Cta. 6146537920",215822.45],["Edenor SS","Cta. 7056963671",34301.72]]}},
+  ingresos:[
+   ["Far\u00edas, Daniel / Messio Gladis","AC02",100000],["Far\u00edas, Daniel / Messio Gladis","AC03",100000],
+   ["Far\u00edas, Daniel / Messio Gladis","AC04",100000],["Far\u00edas, Daniel / Messio Gladis","AC05",100000],
+   ["Far\u00edas, Daniel / Messio Gladis","AC05",100000],["Romano, Ezequiel","H20",100000],
+   ["Chamson, Axel","G10",100000],["Chamson, Axel","G11",100000],["Chamson, Axel","N09",100000],
+   ["Goldstchein, Javier","O05",100000],["Quintana, Juan","B01",100000],
+   ["Lubnicky, Roberto","D20",100000],["M\u00e1rquez, Andrea","C47",100000],["Pr\u00e9stamo","\u2014",5000000]],
+  saldoInicial:0}
+  };
+
+  /* TABS */
+
+
+/* COPY */
+function cp(txt, btn) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(function() {
+      var orig = btn.innerHTML;
+      btn.innerHTML = '✅ Copiado';
+      setTimeout(function() { btn.innerHTML = orig; }, 2000);
+    }).catch(function() {
+      fallbackCopy(txt, btn);
+    });
+  } else {
+    fallbackCopy(txt, btn);
+  }
+}
+function fallbackCopy(txt, btn) {
+  var ta = document.createElement('textarea');
+  ta.value = txt;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand('copy');
+    var orig = btn.innerHTML;
+    btn.innerHTML = '✅ Copiado';
+    setTimeout(function() { btn.innerHTML = orig; }, 2000);
+  } catch(e) {}
+  document.body.removeChild(ta);
+}
+window.cp = cp;
+
+/* MAIL HELPER */
+function abrirMail(){
+  window.location.href = 'mailto:lagodemanzanares.adm@gmail.com?subject=Comprobante%20de%20pago%20-%20Lago%20de%20Manzanares';
+}
+window.abrirMail=abrirMail;
+/* NAV */
+function go(name){
+  var secs=document.querySelectorAll('.sec');
+  for(var i=0;i<secs.length;i++)secs[i].classList.remove('on');
+  var sec=document.getElementById('sec-'+name);
+  if(sec)sec.classList.add('on');
+  var btns=document.querySelectorAll('.nb');
+  for(var j=0;j<btns.length;j++)btns[j].classList.remove('on');
+  var btn=document.querySelector('[data-s="'+name+'"]');
+  if(btn)btn.classList.add('on');
+  if(name==='liquidaciones'&&!rend){renderCards();rend=true;}
+  window.scrollTo(0,0);
+}
+window.go=go;
+
+/* ACCORDION */
+function acc(id){
+  var b=document.getElementById('ab-'+id);
+  var a=document.getElementById('aa-'+id);
+  if(!b)return;
+  var isOpen=b.classList.contains('o');
+  b.classList.toggle('o',!isOpen);
+  if(a)a.classList.toggle('o',!isOpen);
+}
+
+/* LIQUIDACIONES */
+var rend=false;
+function renderCards(){
+  var g=document.getElementById('mgrid');
+  if(!g)return;
+  var keys=['mar26','feb26','ene26','dic25'];
+  for(var i=0;i<keys.length;i++){
+    var k=keys[i],d=MESES[k];
+    var egr=ce(d),ing=ci(d);
+    var saldo=d.saldoInicial!==null?d.saldoInicial+ing-egr:null;
+    var badge=d.status==='ok'?'<span class="mbadge ok">Cerrado</span>':'<span class="mbadge pend">En proceso</span>';
+    var sh=saldo!==null
+      ?'<div class="msaldo"><span>Saldo per\u00edodo</span><span class="'+(saldo>=0?'sp':'sn')+'">'+fmt(saldo)+'</span></div>'
+      :'<div class="msaldo"><span>Estado</span><span style="color:#A8C0D0;font-weight:700">\u23f3 Pendiente</span></div>';
+    var bh=egr>0
+      ?'<div class="mrow"><span>Total egresos</span><strong>'+fmt(egr)+'</strong></div><div class="mrow"><span>Total ingresos</span><strong>'+(ing>0?fmt(ing):'\u2014')+'</strong></div><div class="mdiv"></div>'+sh
+      :'<div style="padding:4px 0;font-size:13px;color:#6E7E8A">Disponible al cierre del per\u00edodo.</div><div class="mdiv"></div>'+sh;
+    var el=document.createElement('div');
+    el.className='mcard';el.id='mc-'+k;el.setAttribute('data-k',k);
+    el.innerHTML='<div class="mc-top"><div><div class="mc-mo">'+d.mes+'</div><div class="mc-yr">'+d.anio+'</div></div>'+badge+'</div><div class="mc-body"><div class="mrow"><span>Vencimiento</span><strong>'+d.vto+'</strong></div>'+bh+'</div>';
+    g.appendChild(el);
+  }
+}
+
+var openK=null;
+function toggleDetail(k){
+  var c=document.getElementById('dbox');
+  var cards=document.querySelectorAll('.mcard');
+  for(var i=0;i<cards.length;i++)cards[i].classList.remove('sel');
+  if(openK===k){c.innerHTML='';openK=null;return;}
+  openK=k;
+  var card=document.getElementById('mc-'+k);
+  if(card)card.classList.add('sel');
+  renderDetail(k);
+  setTimeout(function(){
+    var p=document.getElementById('dbox');
+    if(p){var y=p.getBoundingClientRect().top+window.pageYOffset-80;window.scrollTo(0,y);}
+  },80);
+}
+
+function renderDetail(k){
+  var d=MESES[k],c=document.getElementById('dbox');
+  var egr=ce(d),ing=ci(d),saldo=d.saldoInicial!==null?d.saldoInicial+ing-egr:null;
+  if(!Object.values(d.egresos).some(function(s){return s.items&&s.items.length;})){
+    c.innerHTML='<div class="dpanel"><div class="dp-hdr"><div><div class="dp-title">Liquidaci\u00f3n <span>'+d.mes+' '+d.anio+'</span></div><div class="dp-meta">Vencimiento: '+d.vto+'</div></div><button class="dp-close" id="dpc-'+k+'">\u2715</button></div><div class="dp-body"><div class="nota"><strong>\u23f3 Liquidaci\u00f3n en preparaci\u00f3n</strong>'+(d.nota||'Esta liquidaci\u00f3n estar\u00e1 disponible al cierre del per\u00edodo.')+'</div></div></div>';
+    document.getElementById('dpc-'+k).onclick=function(){toggleDetail(k);};return;
+  }
+  var eh='';
+  var esecs=Object.values(d.egresos);
+  for(var i=0;i<esecs.length;i++){
+    var sec=esecs[i];
+    if(!sec.items||!sec.items.length)continue;
+    var sub=sec.items.reduce(function(s,r){return s+(r[2]||0);},0);
+    var rows='';
+    for(var j=0;j<sec.items.length;j++){var r=sec.items[j];rows+='<tr><td>'+r[0]+'</td><td class="cm">'+(r[1]||'')+'</td><td class="am">'+(r[2]?fmt(r[2]):'$ \u2014')+'</td></tr>';}
+    eh+='<div class="slbl">'+sec.label+'</div><div class="twrap"><table class="tbl"><thead><tr><th>Concepto</th><th>Comprobante</th><th class="r">Importe</th></tr></thead><tbody>'+rows+'<tr class="str"><td colspan="2">Sub-total</td><td class="am">'+fmt(sub)+'</td></tr></tbody></table></div>';
+  }
+  var ih='';
+  if(d.ingresos.length){
+    var irows='';
+    for(var m=0;m<d.ingresos.length;m++){var ri=d.ingresos[m];irows+='<tr><td>'+ri[0]+'</td><td class="cm">'+ri[1]+'</td><td class="am">'+fmt(ri[2])+'</td></tr>';}
+    ih='<div class="slbl g" style="margin-top:16px">Ingresos del per\u00edodo</div><div class="twrap"><table class="tbl"><thead><tr><th>Propietario / Concepto</th><th>Lote</th><th class="r">Importe</th></tr></thead><tbody>'+irows+'<tr class="ttr"><td colspan="2">TOTAL INGRESOS</td><td class="am">'+fmt(ing)+'</td></tr></tbody></table></div>';
+  }
+  var sc=saldo!==null?(saldo>=0?'sp2':'sn2'):'sn2';
+  var sl=saldo!==null?fmt(saldo):'\u2014';
+  c.innerHTML='<div class="dpanel"><div class="dp-hdr"><div><div class="dp-title">Liquidaci\u00f3n <span>'+d.mes+' '+d.anio+'</span></div><div class="dp-meta">Per\u00edodo: '+d.periodo+' \u00b7 Vencimiento: '+d.vto+'</div></div><button class="dp-close" id="dpc-'+k+'">\u2715</button></div><div class="dp-body"><div class="slbl" style="margin-top:0">Egresos</div>'+eh+'<div class="twrap"><table class="tbl"><tbody><tr class="ttr"><td colspan="2">TOTAL DE EGRESOS</td><td class="am">'+fmt(egr)+'</td></tr></tbody></table></div>'+ih+'<div class="sboxes"><div class="sbox egr"><div class="sb-lbl">Total egresos</div><div class="sb-val">'+fmt(egr)+'</div></div><div class="sbox ing"><div class="sb-lbl">Total ingresos</div><div class="sb-val">'+(ing>0?fmt(ing):'\u2014')+'</div></div><div class="sbox '+sc+'"><div class="sb-lbl">Saldo del per\u00edodo</div><div class="sb-val">'+sl+'</div></div></div>'+(d.saldoInicial!==null?'<div class="nota"><strong>Saldo inicial del per\u00edodo</strong>'+fmt(d.saldoInicial)+'</div>':'')+'</div></div>';
+  document.getElementById('dpc-'+k).onclick=function(){toggleDetail(k);};
+}
+
+/* INIT */
+function init(){
+  /* Nav */
+  var nav=document.getElementById('nav');
+  if(nav)nav.addEventListener('click',function(e){
+    var btn=e.target.closest('.nb');
+    if(!btn)return;
+    var s=btn.getAttribute('data-s');
+    if(s)go(s);
+  });
+
+  /* Accordions */
+  document.addEventListener('click',function(e){
+    var ab=e.target.closest('.ab');
+    if(ab){
+      var id=ab.getAttribute('data-a');
+      if(id)acc(id);
+      return;
+    }
+    var mc=e.target.closest('.mcard');
+    if(mc){
+      var k=mc.getAttribute('data-k');
+      if(k)toggleDetail(k);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  renderComunicados();
+  renderTimeline();
+  init();
+});
+})();
+</script>
+</body>
+</html>
